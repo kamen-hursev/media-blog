@@ -1,0 +1,20 @@
+@import "bootstrap";
+
+.btn-show {
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.btn-edit {
+  @extend .btn;
+  @extend .btn-success;
+}
+
+.btn-destroy {
+  @extend .btn;
+  @extend .btn-danger;
+}
+
+.actions {
+  margin: 10px;
+}

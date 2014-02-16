@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Body</th>
       <th>Slug</th>
       <th></th>
       <th></th>
@@ -16,11 +15,10 @@
     <% @reports.each do |report| %>
       <tr>
         <td><%= report.title %></td>
-        <td><%= report.body %></td>
         <td><%= report.slug %></td>
-        <td><%= link_to 'Show', report %></td>
-        <td><%= link_to 'Edit', edit_report_path(report) %></td>
-        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', report, class: 'btn-show' %></td>
+        <td><%= link_to 'Edit', edit_report_path(report), class: 'btn-edit' %></td>
+        <td><%= link_to 'Destroy', report, method: :delete, class: 'btn-destroy', data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

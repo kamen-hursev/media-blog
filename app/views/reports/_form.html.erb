@@ -24,9 +24,10 @@
     <%= f.text_field :slug %>
   </div>
   <div class="field">
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <%= f.label :category %><br>
+    <%= f.collection_select :category_id, @categories, :id, :name, prompt: '-- Select --' %>
   </div>
   <div class="actions">
-    <%= f.submit class: 'btn' %>
+    <%= f.submit class: 'submit' %>
   </div>
 <% end %>
