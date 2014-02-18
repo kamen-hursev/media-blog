@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit, :create, :update]
 
   # GET /reports
   # GET /reports.json
@@ -15,12 +16,10 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
-    @categories = Category.all
   end
 
   # GET /reports/1/edit
   def edit
-    @categories = Category.all
   end
 
   # POST /reports
@@ -71,6 +70,10 @@ class ReportsController < ApplicationController
       else
         @report = Report.where(slug: params[:id]).first
       end
+    end
+
+    def set_categories
+      @categories = Category.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

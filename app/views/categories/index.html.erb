@@ -18,7 +18,10 @@
         <td><%= category.reports.size %></td>
         <td><%= link_to 'Show', category, class: 'btn-show' %></td>
         <td><%= link_to 'Edit', edit_category_path(category), class: 'btn-edit' %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, class: 'btn-destroy', data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Destroy', category, method: :delete,
+            class: 'btn-destroy', data: { confirm: 'Are you sure?' } if category.reports.size == 0 %>
+        </td>
       </tr>
     <% end %>
   </tbody>
