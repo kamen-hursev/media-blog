@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  body: MyText
-  slug: MyString
+sochi:
+  title: What is going on in Sochi
+  body: Sochi games seem fine
+  slug: what_is_going_on_in_sochi
+  category: sport
 
-two:
-  title: MyString
-  body: MyText
-  slug: MyString
+president:
+  title: President calls for referendum
+  body: President calls for regerendum on the voting system
+  slug: president_calls_for_referendum
+  category: politics

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ReportsControllerTest < ActionController::TestCase
   setup do
-    @report = reports(:one)
+    @report = reports(:president)
   end
 
   test "should get index" do
@@ -18,10 +18,10 @@ class ReportsControllerTest < ActionController::TestCase
 
   test "should create report" do
     assert_difference('Report.count') do
-      post :create, report: { body: @report.body, slug: @report.slug, title: @report.title }
+      post :create, report: { body: 'test body', slug: 'some_report_title', title: 'Some Report Title', category_id: categories(:sport).id }
     end
 
-    assert_redirected_to report_path(assigns(:report))
+    assert_redirected_to :reports
   end
 
   test "should show report" do
