@@ -13,7 +13,7 @@
 
   <tbody>
     <% @categories.each do |category| %>
-      <tr>
+      <tr data-id="<%= category.id %>">
         <td><%= category.name %></td>
         <td><%= category.reports.size %></td>
         <td><%= link_to 'Show', category, class: 'btn-show' %></td>

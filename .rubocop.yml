@@ -146,7 +146,7 @@ LambdaCall:
     - braces
 
 LineLength:
-  Max: 79
+  Max: 99
 
 MethodDefParentheses:
   EnforcedStyle: require_parentheses
