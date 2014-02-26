@@ -20,6 +20,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    authorize! :edit, @category
   end
 
   # POST /categories

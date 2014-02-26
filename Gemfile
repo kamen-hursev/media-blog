@@ -47,6 +47,7 @@ gem 'unicorn'
 # gem 'capistrano', group: :development
 
 gem 'devise'
+gem 'cancan'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
