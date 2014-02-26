@@ -29,12 +29,15 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
-    #custom code :-)
     user ||= User.new
     if user.admin?
-        can :manage, :all
+      can :manage, :all
+      cannot :edit, Category, name: 'politics'
+      cannot :edit, Category do |category|
+        category.reports.size > 0
+      end
     else
-        can :read, :all
+      can :read, :all
     end
   end
 end
