@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140302225210) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
-    t.integer  "user_id"
+    t.integer  "user_id",     null: false
   end
 
   add_index "reports", ["category_id"], name: "index_reports_on_category_id", using: :btree
