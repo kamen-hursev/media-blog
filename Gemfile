@@ -6,7 +6,6 @@ gem 'dotenv-rails', :groups => [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use sqlite3 as the database for Active Record
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -46,6 +45,9 @@ gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
+
+gem 'devise'
+gem 'cancan'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
