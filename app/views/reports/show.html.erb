@@ -1,7 +1,9 @@
 <h1>
   <%= @report.title %>
 </h1>
-
+<p>
+  <%= @report.owner.email %>
+</p>
 <p>
   <%= @report.body.html_safe %>
 </p>
