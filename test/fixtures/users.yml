@@ -4,18 +4,20 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+<% u = User.new %>
+<% u.password = 1234 %>
 admin:
   email: admin@test-no.com
-  password: 1234a
+  encrypted_password: <%= u.encrypted_password %>
   username: admin
   admin: true
 #
 john:
   email: john@test-no.com
-  password: 1234j
+  encrypted_password: <%= u.encrypted_password %>
   username: john
 
 ema:
   email: ema@test-no.com
-  password: 1234e
+  encrypted_password: <%= u.encrypted_password %>
   username: ema

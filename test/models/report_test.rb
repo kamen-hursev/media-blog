@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-  test 'should not allow invalid report' do
+  test 'should not allow an invalid report' do
     report = Report.new
     assert report.invalid?
     assert report.errors[:title].any?, 'report without a title is valid'
@@ -17,13 +17,14 @@ class ReportTest < ActiveSupport::TestCase
     assert report.errors[:slug].any?, 'report with existing slug is valid'
   end
 
-  test 'should allow report with valid fields' do
+  test 'should allow a report with valid fields' do
     report = Report.new(
       title: 'test title',
       slug: 'slug_written',
       body: 'some body text goes here',
+      user: users(:john),
       category: categories(:sport)
     )
-    assert report.valid?
+    assert report.valid?, report.errors.reduce {|r, i| r + ' ' + i.message}
   end
 end
