@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can :create, :all
+      can :create, Report
       can :manage, Report, user_id: user.id
     end
   end
