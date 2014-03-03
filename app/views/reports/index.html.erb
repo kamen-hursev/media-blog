@@ -15,7 +15,7 @@
       <tr>
         <td><%= report.title %></td>
         <td><%= report.slug %></td>
-        <td><%= report.owner.username %></td>
+        <td><%= report.owner.email %></td>
         <td>
           <%= link_to 'Show', report, class: 'btn-show' if can? :read, report %>
           <%= link_to 'Edit', edit_report_path(report), class: 'btn-edit' if can? :edit, report %>

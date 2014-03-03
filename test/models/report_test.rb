@@ -8,6 +8,7 @@ class ReportTest < ActiveSupport::TestCase
     assert report.errors[:slug].any?, 'report without a slug is valid'
     assert report.errors[:category].any?, 'report without a category is valid'
     assert report.errors[:body].any?, 'report without a body is valid'
+    assert report.errors[:user].any?, 'report without a user/owner is valid'
   end
 
   test 'should not allow two reports with the same slug' do
