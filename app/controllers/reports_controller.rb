@@ -8,6 +8,7 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
+    @reports = @reports.includes(:user)
   end
 
   # GET /reports/1

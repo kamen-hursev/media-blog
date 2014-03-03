@@ -5,8 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Slug</th>
-      <th></th>
-      <th></th>
+      <th>Owner</th>
       <th></th>
     </tr>
   </thead>
@@ -16,9 +15,12 @@
       <tr>
         <td><%= report.title %></td>
         <td><%= report.slug %></td>
-        <td><%= link_to 'Show', report, class: 'btn-show' %></td>
-        <td><%= link_to 'Edit', edit_report_path(report), class: 'btn-edit' %></td>
-        <td><%= link_to 'Destroy', report, method: :delete, class: 'btn-destroy', data: { confirm: 'Are you sure?' } %></td>
+        <td><%= report.owner.username %></td>
+        <td>
+          <%= link_to 'Show', report, class: 'btn-show' if can? :read, report %>
+          <%= link_to 'Edit', edit_report_path(report), class: 'btn-edit' if can? :edit, report %>
+          <%= link_to 'Destroy', report, method: :delete, class: 'btn-destroy', data: { confirm: 'Are you sure?' } if can? :destroy, report %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Report', new_report_path, class: 'btn btn-link' %>
+<%= link_to 'New Report', new_report_path, class: 'btn btn-link' if can? :create, Report %>
