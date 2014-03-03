@@ -11,7 +11,7 @@ admin:
   encrypted_password: <%= u.encrypted_password %>
   username: admin
   admin: true
-#
+
 john:
   email: john@test-no.com
   encrypted_password: <%= u.encrypted_password %>

@@ -13,3 +13,10 @@ president:
   slug: president_calls_for_referendum
   category: politics
   user: john
+
+admin_report:
+  title: Admin has full control here
+  body: admin works hard to control all
+  slug: admin_has_full_control_here
+  category: politics
+  user: admin
