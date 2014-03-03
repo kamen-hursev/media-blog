@@ -1,13 +1,13 @@
 class ReportsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :create_report, only: [:create]
+  load_and_authorize_resource
 
-  before_action :set_report, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :edit, :create, :update]
 
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.all
   end
 
   # GET /reports/1
@@ -17,7 +17,6 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
-    @report = Report.new
   end
 
   # GET /reports/1/edit
@@ -27,7 +26,6 @@ class ReportsController < ApplicationController
   # POST /reports
   # POST /reports.json
   def create
-    @report = Report.new(report_params)
     @report.owner = current_user
 
     respond_to do |format|
@@ -82,5 +80,9 @@ class ReportsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
       params.require(:report).permit(:title, :body, :slug, :category_id)
+    end
+
+    def create_report
+      @report = Report.new(report_params)
     end
 end
