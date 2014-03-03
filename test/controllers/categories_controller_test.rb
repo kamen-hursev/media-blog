@@ -3,6 +3,8 @@ require 'test_helper'
 class CategoriesControllerTest < ActionController::TestCase
   setup do
     @category = categories(:sport)
+    @user = users(:admin)
+    sign_in @user
   end
 
   test 'should get index' do
@@ -64,5 +66,33 @@ class CategoriesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to categories_path
+  end
+
+  test 'should not create categories if not admin' do
+    sign_in users(:john)
+
+    post :create, category: { name: 'test not admin category' }
+    assert_redirected_to root_path
+    assert_not_nil flash[:alert]
+  end
+
+  test 'should not update categories if not admin' do
+    sign_in users(:john)
+
+    patch :update, id: @category, category: { name: @category.name + ' not admin' }
+    assert_redirected_to root_path
+    assert_not_nil flash[:alert]
+  end
+
+  test 'should not destroy categories if not admin' do
+    sign_in users(:john)
+
+    category = categories(:fun)
+    assert_difference('Category.count', 0) do
+      delete :destroy, id: category
+    end
+
+    assert_redirected_to root_path
+    assert_not_nil flash[:alert]
   end
 end
