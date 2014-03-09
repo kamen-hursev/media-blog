@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
+
+  def access_denied(exception)
+    raise CanCan::AccessDenied.new(exception.message)
+  end
 end
