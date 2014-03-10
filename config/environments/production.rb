@@ -79,6 +79,4 @@ MediaBlog::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { :host => 'media-blog.herokuapp.com' }
-
-  config.assets.precompile += ['active_admin.css']
 end
