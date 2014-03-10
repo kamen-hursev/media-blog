@@ -1,6 +1,17 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :admin
 
+  controller do
+    def update_resource(object, attributes)
+      if attributes.first[:password].present?
+        update_method = :update_attributes
+      else
+        update_method =  :update_without_password
+      end
+      object.send(update_method, *attributes)
+    end
+  end
+
   index do
     selectable_column
     id_column
@@ -12,13 +23,13 @@ ActiveAdmin.register User do
   end
 
   filter :email
+  filter :admin
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at
-  filter :admin
 
   form do |f|
-    f.inputs "User" do
+    f.inputs 'User' do
       f.input :email
       f.input :password
       f.input :password_confirmation
@@ -26,12 +37,4 @@ ActiveAdmin.register User do
     end
     f.actions
   end
-
-  controller do
-    def update_resource(object, attributes)
-      update_method = attributes.first[:password].present? ? :update_attributes : :update_without_password
-      object.send(update_method, *attributes)
-    end
-  end
-
 end
