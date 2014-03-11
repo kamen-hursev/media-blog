@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    access_denied(exception)
   end
 
   def access_denied(exception)
-    raise CanCan::AccessDenied.new(exception.message)
+    redirect_to root_url, :alert => exception.message
   end
 end
