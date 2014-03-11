@@ -194,6 +194,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails_12factor
   rails_layout
+  rake
   sass-rails (~> 4.0.0)
   sdoc
   turbolinks

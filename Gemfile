@@ -13,9 +13,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
-group :development do
-  gem 'rails_layout'
-end
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -42,9 +40,6 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the app server
-gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
@@ -53,6 +48,17 @@ gem 'cancan'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development do
+  gem 'rails_layout'
+end
+
+group :test do
+  gem 'rake'
+end
+
 group :production do
 	gem 'rails_12factor'
+  # Use unicorn as the app server
+  gem 'unicorn'
 end

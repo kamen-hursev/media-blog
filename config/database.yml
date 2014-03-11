@@ -14,8 +14,8 @@ test:
   encoding: unicode
   pool: 5
   database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASS'] %>
+  username: <%= ENV['TRAVIS'] ? 'postgres' : ENV['DB_USER'] %>
+  password: <%= ENV['TRAVIS'] ? '' : ENV['DB_PASS'] %>
 
 production:
   adapter: postgresql

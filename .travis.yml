@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.0.0
+env:
+  - RAILS_ENV=test
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate test
+before_script:
+  - psql -c 'create database media_blog_test;' -U postgres
