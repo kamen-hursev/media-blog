@@ -55,7 +55,8 @@ end
 
 group :test do
   gem 'rake'
-  gem 'coveralls', require: false
+  #gem 'coveralls', require: false
+  gem 'simplecov', require: false
 end
 
 group :production do
