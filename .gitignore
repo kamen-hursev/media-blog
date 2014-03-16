@@ -16,6 +16,6 @@
 /tmp
 
 # Custom ignores
-.env
+.env.local
 .env.production
 coverage

@@ -50,6 +50,7 @@ gem 'cancan'
 # gem 'debugger', group: [:development, :test]
 
 gem 'paperclip', '~> 4.1'
+gem 'paperclip-dropbox', '>= 1.1.7'
 
 group :development do
   gem 'rails_layout'
