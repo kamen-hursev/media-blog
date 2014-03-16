@@ -22,6 +22,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
+    @report.pictures.build
   end
 
   # POST /reports
@@ -65,25 +66,32 @@ class ReportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_report
-      if params[:id].to_i != 0
-        @report = Report.find(params[:id])
-      else
-        @report = Report.where(slug: params[:id]).first
-      end
-    end
 
-    def set_categories
-      @categories = Category.all
+  # Use callbacks to share common setup or constraints between actions.
+  def set_report
+    if params[:id].to_i != 0
+      @report = Report.find(params[:id])
+    else
+      @report = Report.where(slug: params[:id]).first
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def report_params
-      params.require(:report).permit(:title, :body, :slug, :category_id)
-    end
+  def set_categories
+    @categories = Category.all
+  end
 
-    def create_report
-      @report = Report.new(report_params)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def report_params
+    params.require(:report).permit(
+      :title,
+      :body,
+      :slug,
+      :category_id,
+      pictures_attributes: [:title, :file]
+    )
+  end
+
+  def create_report
+    @report = Report.new(report_params)
+  end
 end

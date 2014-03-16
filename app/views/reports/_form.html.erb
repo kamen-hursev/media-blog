@@ -27,6 +27,16 @@
     <%= f.label :category %><br>
     <%= f.collection_select :category_id, @categories, :id, :name, prompt: '-- Select --' %>
   </div>
+  <%= f.fields_for :pictures do |picture_form| %>
+    <div>
+      <%= picture_form.label :title %>
+      <%= picture_form.text_field :title %>
+    </div>
+    <div>
+      <%= picture_form.label :file %>
+      <%= picture_form.file_field :file %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit class: 'submit' %>
   </div>
