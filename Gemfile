@@ -4,7 +4,7 @@ ruby '2.0.0'
 gem 'dotenv-rails', :groups => [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '~> 4.0'
 
 gem 'pg'
 
@@ -48,6 +48,8 @@ gem 'cancan'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'paperclip', '~> 4.1'
 
 group :development do
   gem 'rails_layout'
