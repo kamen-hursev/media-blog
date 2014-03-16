@@ -4,9 +4,9 @@ class Picture < ActiveRecord::Base
   has_attached_file(
     :file,
     styles: { medium: '400x400>', thumb: '100x100#' },
-    path: ':rails_root/public/system/:class/:attachment/:id_partition/:style/:hash_:filename',
-    url: '/system/:class/:attachment/:id_partition/:style/:hash_:filename',
-    hash_secret: 'HiperMegaSecretString',
+    path: ':class/:attachment/:id_partition/:style/:hash.:extension',
+    url: ':class/:attachment/:id_partition/:style/:hash.:extension',
+    hash_secret: '9494nfjwqpofkadfa9fa093e4',
     storage: :dropbox,
     dropbox_credentials: Rails.root.join('config/dropbox.yml')
   )

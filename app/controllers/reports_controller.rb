@@ -18,11 +18,11 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
+    @report.pictures.build
   end
 
   # GET /reports/1/edit
   def edit
-    @report.pictures.build
   end
 
   # POST /reports
