@@ -29,6 +29,10 @@
   </div>
   <%= f.fields_for :pictures do |picture_form| %>
     <div>
+      <%= picture_form.label :_destroy, 'Remove' %>
+      <%= picture_form.check_box :_destroy %>
+    </div>
+    <div>
       <%= picture_form.label :title %>
       <%= picture_form.text_field :title %>
     </div>

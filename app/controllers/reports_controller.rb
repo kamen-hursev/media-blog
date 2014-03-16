@@ -87,7 +87,7 @@ class ReportsController < ApplicationController
       :body,
       :slug,
       :category_id,
-      pictures_attributes: [:title, :file]
+      pictures_attributes: [:id, :title, :file, :_destroy]
     )
   end
 

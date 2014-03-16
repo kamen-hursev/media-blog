@@ -6,8 +6,13 @@ class Report < ActiveRecord::Base
   validates :title, :body, :category, :user, :slug, presence: true
   validates :slug, uniqueness: true
 
-  accepts_nested_attributes_for :pictures, reject_if: :all_blank
+  accepts_nested_attributes_for :pictures, allow_destroy: true, reject_if: :all_blank
 
   alias_method :owner, :user
   alias_method :owner=, :user=
+
+  private
+  def invalid_picture? attributes
+    attributes['file'].blank?
+  end
 end

@@ -5,6 +5,11 @@
   <%= @report.owner.email %>
 </p>
 <p>
+  <% @report.pictures.each do |picture| %>
+    <%= image_tag picture.file.url(:medium) %>
+  <% end %>
+</p>
+<p>
   <%= @report.body.html_safe %>
 </p>
 
