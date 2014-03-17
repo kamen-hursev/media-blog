@@ -7,7 +7,7 @@ class Report < ActiveRecord::Base
 
   validates :title, :body, :category, :user, :slug, presence: true
   validates :slug, uniqueness: true
-  validate :number_of_pictures
+  validate :valid_number_of_pictures
 
   accepts_nested_attributes_for :pictures, allow_destroy: true, reject_if: :invalid_picture?
 
@@ -20,7 +20,7 @@ class Report < ActiveRecord::Base
     attributes['file'].blank? && attributes['id'].blank?
   end
 
-  def number_of_pictures
+  def valid_number_of_pictures
     if pictures.size > MAX_PICTURES
       errors.add(:pictures, "are more than alowed. Maximum #{MAX_PICTURES} are allowed")
     end
