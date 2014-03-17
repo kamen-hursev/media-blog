@@ -10,7 +10,7 @@
   <% end %>
 </p>
 <p>
-  <%= @report.body.html_safe %>
+  <%= @report.body %>
 </p>
 
 <%= link_to 'Edit', edit_report_path(@report), class: 'btn btn-link' if can? :edit, @report %> |
