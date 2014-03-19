@@ -5,8 +5,6 @@ class AdminAbility
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     user ||= User.new
-    if user.admin?
-      can :manage, :all
-    end
+    can :manage, :all if user.admin?
   end
 end

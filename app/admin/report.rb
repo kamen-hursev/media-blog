@@ -28,7 +28,7 @@ ActiveAdmin.register Report do
       f.input :title
       f.input :slug
       f.input :category
-      f.input :user, :member_label => :email
+      f.input :user, member_label: :email
       f.input :body
     end
     f.actions
