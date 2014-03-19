@@ -66,3 +66,5 @@ group :production do
   # Use unicorn as the app server
   gem 'unicorn'
 end
+
+gem 'rails_best_practices'

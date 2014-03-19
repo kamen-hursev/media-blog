@@ -1,10 +1,10 @@
-<%= form_for(@report, html: { class: 'simple-form' } ) do |f| %>
-  <% if @report.errors.any? %>
+<%= form_for(report, html: { class: 'simple-form' } ) do |f| %>
+  <% if report.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
 
       <ul>
-      <% @report.errors.full_messages.each do |msg| %>
+      <% report.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -25,11 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.collection_select :category_id, @categories, :id, :name, prompt: '-- Select --' %>
+    <%= f.collection_select :category_id, categories, :id, :name, prompt: '-- Select --' %>
   </div>
   <ul class="report-pictures media-list">
     <%= f.fields_for :pictures do |picture_field| %>
-      <%= render partial: 'picture_item', locals: {f: picture_field} %>
+      <%= render 'picture_item', f: picture_field %>
     <% end %>
   </ul>
   <div class="clear"></div>

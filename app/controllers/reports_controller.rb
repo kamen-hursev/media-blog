@@ -38,9 +38,9 @@ class ReportsController < ApplicationController
     respond_to do |format|
       if @report.save
         format.html { redirect_to :reports, notice: 'Report was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @report }
+        format.json { render 'show', status: :created, location: @report }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
@@ -54,7 +54,7 @@ class ReportsController < ApplicationController
         format.html { redirect_to @report, notice: 'Report was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
@@ -71,15 +71,6 @@ class ReportsController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_report
-    if params[:id].to_i != 0
-      @report = Report.find(params[:id])
-    else
-      @report = Report.where(slug: params[:id]).first
-    end
-  end
 
   def set_categories
     @categories = Category.all
