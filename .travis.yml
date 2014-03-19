@@ -3,5 +3,6 @@ rvm:
   - 2.0.0
 env:
   - RAILS_ENV=test
+script: 'rake test:coverage'
 before_script:
   - psql -c 'create database media_blog_test;' -U postgres
