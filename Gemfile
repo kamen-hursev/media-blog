@@ -44,6 +44,7 @@ end
 # gem 'capistrano', group: :development
 
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'cancan'
 
 # Use debugger
