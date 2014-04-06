@@ -36,3 +36,18 @@ MediaBlog::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
+
+OmniAuth.config.test_mode = true
+
+info = OmniAuth::AuthHash::InfoHash.new({
+  email: 'some@test.com',
+  name: 'who cares',
+  first_name: 'first name',
+  last_name: 'last name'
+})
+
+OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+  provider: 'facebook',
+  uid: '1234',
+  info: info
+})

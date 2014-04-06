@@ -30,6 +30,17 @@ class ReportsControllerTest < ActionController::TestCase
     assert_redirected_to :reports
   end
 
+  test 'should not create report with existing slug' do
+    user = users(:john)
+    sign_in user
+
+    post :create, report: { body: 'test body', slug: 'what_is_going_on_in_sochi',
+                            title: 'Some Report Title' + user.id.to_s,
+                            category_id: categories(:sport).id }
+    assert_response :success
+    assert_template :new
+  end
+
   test 'should show report' do
     get :show, id: @report
     assert_response :success
@@ -57,6 +68,33 @@ class ReportsControllerTest < ActionController::TestCase
     assert_redirected_to report_path(assigns(:report))
   end
 
+  test 'should not update report with existing slug' do
+    user = users(:john)
+    sign_in user
+
+    report = user.reports.first
+    patch :update, id: report, report: {
+      body: report.body,
+      slug: 'what_is_going_on_in_sochi',
+      title: report.title + user.id.to_s
+    }
+    assert_response :success
+    assert_template :edit
+  end
+
+  test 'should not update report if not owned' do
+    user = users(:john)
+    sign_in user
+
+    report = Report.where(slug: 'what_is_going_on_in_sochi').first
+    patch :update, id: report, report: {
+      body: report.body,
+      slug: report.slug + user.id.to_s,
+      title: report.title + user.id.to_s
+    }
+    assert_response 302
+  end
+
   test 'admin should destroy any report' do
     sign_in :user, users(:admin)
     report = Report.first
@@ -77,5 +115,11 @@ class ReportsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to reports_path
+  end
+
+  test 'should get slug suggestion' do
+    sign_in :user, users(:john)
+    get :slug_suggestion, title: 'some title', format: :json
+    assert_response :success
   end
 end

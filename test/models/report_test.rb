@@ -42,4 +42,14 @@ class ReportTest < ActiveSupport::TestCase
            'picture with id is not valid'
     assert !report.send(:invalid_picture?, 'file' => ':-)')
   end
+
+  test 'should suggest slug' do
+    report = Report.new title: 'Some test Report     title'
+    assert_equal 'some_test_report_title', report.slug_suggestion
+  end
+
+  test 'should not suggest slug if already exists' do
+    report = Report.new title: 'What is going on in Sochi'
+    assert_equal nil, report.slug_suggestion
+  end
 end
