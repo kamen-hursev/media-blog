@@ -4,13 +4,14 @@
 $(->
   $(".add-picture").on("click", ->
     $this = $(this)
+    template = $(".report-pictures li.template")
     newIndex = $(".report-pictures li.section").length
     replacePattern = new RegExp($this.data("replacePattern"), "g")
 
-    content = $(".template").html().replace(replacePattern, newIndex)
+    content = template.html().replace(replacePattern, newIndex)
     addSection = $("<li></li>").html(content).addClass("section")
 
-    addSection.insertBefore($(".template"))
+    addSection.insertBefore(template)
     $this.hide() if $this.data("maxItems") <= $(".report-pictures li.section").length
   )
 
