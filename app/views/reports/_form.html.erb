@@ -1,4 +1,4 @@
-<%= form_for(report, html: { class: 'simple-form' } ) do |f| %>
+<%= form_for(report, html: { class: 'simple-form report' } ) do |f| %>
   <% if report.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
@@ -29,9 +29,20 @@
   </div>
   <ul class="report-pictures media-list">
     <%= f.fields_for :pictures do |picture_field| %>
-      <%= render 'picture_item', f: picture_field %>
+      <%= render 'picture_item', f: picture_field, html_class: 'section' %>
+    <% end %>
+    <%= f.fields_for :pictures, Picture.new, child_index: '--replace--' do |picture_template| %>
+      <%= render 'picture_item', f: picture_template, html_class: 'template' %>
     <% end %>
   </ul>
+  <% if report.pictures.size < Report::MAX_PICTURES %>
+    <%= button_tag 'Add Picture', type: 'button', class: 'add-picture',
+                    data: {
+                      'replace-pattern' => '--replace--',
+                      'max-items' => Report::MAX_PICTURES
+                    }
+    %>
+  <% end %>
   <div class="clear"></div>
   <div class="actions">
     <%= f.submit class: 'submit' %>

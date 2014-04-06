@@ -18,16 +18,10 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
-    Report::MAX_PICTURES.times do
-      @report.pictures.build
-    end
   end
 
   # GET /reports/1/edit
   def edit
-    (Report::MAX_PICTURES - @report.pictures.size).times do
-      @report.pictures.build
-    end
   end
 
   # POST /reports
