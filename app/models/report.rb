@@ -14,6 +14,11 @@ class Report < ActiveRecord::Base
   alias_method :owner, :user
   alias_method :owner=, :user=
 
+  def slug_suggestion
+    slug = title.downcase.gsub(/\s+/, '_')
+    slug if !Report.where(slug: slug).first
+  end
+
   private
 
   def invalid_picture?(attributes)

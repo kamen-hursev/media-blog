@@ -4,6 +4,7 @@ MediaBlog::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :reports
+  get 'reports/slug_suggestion/:title' => 'reports#slug_suggestion', as: :slug_suggestion
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

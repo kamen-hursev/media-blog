@@ -19,4 +19,27 @@ $(->
     form = $(this)
     form.find("li.template").remove()
   )
+
+  $("form.report").on("keyup blur", "#report_title", ->
+    $this = $(this)
+    clearTimeout($this.data('timeoutId'))
+    timeoutId = setTimeout((->
+      slugSuggestion = $(".slug-suggestion")
+      url = slugSuggestion.data("url").replace("-title-", $this.val())
+      $.get(url, (data) ->
+        if data.slug
+          slugSuggestion.find(".suggestion").html(data.slug)
+          slugSuggestion.show()
+        else
+          slugSuggestion.hide()
+      )),
+      500
+    )
+    $this.data('timeoutId', timeoutId)
+  )
+
+  $("form.report").on("click", ".slug-suggestion a", (e) ->
+    e.preventDefault()
+    $("#report_slug").val($(".slug-suggestion .suggestion").html())
+  )
 )

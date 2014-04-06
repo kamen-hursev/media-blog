@@ -64,6 +64,13 @@ class ReportsController < ApplicationController
     end
   end
 
+  # GET /report/slug_suggestion/:title
+  def slug_suggestion
+    @report = Report.new(title: params[:title])
+    slug = @report.slug_suggestion
+    render json: {slug: slug}
+  end
+
   private
 
   def set_categories

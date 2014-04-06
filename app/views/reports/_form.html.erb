@@ -16,7 +16,13 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :slug %><br>
+    <%= f.label :slug %>
+    <span class="slug-suggestion"
+        data-url="<%= slug_suggestion_url title: '-title-', format: :json %>">
+      suggestion: <span class="suggestion"></span>
+      <a href="#use">use</a>
+    </span>
+    <br>
     <%= f.text_field :slug %>
   </div>
   <div class="field">
