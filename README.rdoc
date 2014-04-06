@@ -4,3 +4,5 @@ This is just a test project. Most probably you can't find anything useful here :
 
 == INFO
 {<img src="https://codeclimate.com/github/kamen-hursev/media-blog.png" />}[https://codeclimate.com/github/kamen-hursev/media-blog]
+{<img src="https://coveralls.io/repos/kamen-hursev/media-blog/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/kamen-hursev/media-blog?branch=master]
+{<img src="https://travis-ci.org/kamen-hursev/media-blog.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/kamen-hursev/media-blog]
